@@ -36,5 +36,5 @@ model.save_weights("mnist_model.h5")
 
 pred = model.predict(x_train)
 print(pred[0])
-print(f'Predicted class: {classes[np.argmax(pred[0])]}'
+print(f'Predicted class: {classes[np.argmax(pred[0])]}\n'
       f'Real class: {classes[np.argmax(y_train[0])]}')
