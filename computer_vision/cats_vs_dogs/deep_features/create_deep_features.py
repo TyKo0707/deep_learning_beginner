@@ -1,8 +1,5 @@
 from keras.preprocessing.image import ImageDataGenerator
-from keras.models import Sequential
-from keras.layers import Dropout, Flatten, Dense
 from keras.applications.vgg16 import VGG16
-from keras.optimizers import adam_v2
 import numpy as np
 
 directories = ['train', 'val', 'test']
