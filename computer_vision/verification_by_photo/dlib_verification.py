@@ -1,6 +1,6 @@
 import dlib
 from skimage import io
-from scipy.spatial import distance
+import math
 
 sp = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 face_rec = dlib.face_recognition_model_v1('dlib_face_recognition_resnet_model_v1.dat')
@@ -24,6 +24,14 @@ def get_descriptor(img_path: str, ):
         return face_descriptor
 
 
+def euclidean_distance(a, b):
+    res = 0
+    for i in range(len(a)):
+        res += (a[i] - b[i]) ** 2
+
+    return math.sqrt(res)
+
+
 face_descriptor1 = get_descriptor('images_to_recognize/sozykin_passport.jpg')
 face_descriptor2 = get_descriptor('images_to_recognize/sozykin_webcam.jpg')
 s1 = ''
@@ -35,6 +43,5 @@ for i in range(len(face_descriptor1)):
 print(s1)
 print(s2)
 
-euclid_dist = distance.euclidean(face_descriptor1, face_descriptor2)
+euclid_dist = euclidean_distance(face_descriptor1, face_descriptor2)
 print(euclid_dist)
-
